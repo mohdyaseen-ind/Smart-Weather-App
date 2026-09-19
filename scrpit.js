@@ -5,10 +5,18 @@ const weatherDisplay = document.getElementById("weatherDisplay")
 const darkModeToggle = document.getElementById("darkModeToggle")
 
 
-searchBtn.addEventListener("click",()=>{
-    const city = cityInput.value;
-    if (city){
+const performSearch = () => {
+    const city = cityInput.value.trim();
+    if (city) {
         getWeathercity(city);
+    }
+};
+
+searchBtn.addEventListener("click", performSearch);
+
+cityInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        performSearch();
     }
 });
 
